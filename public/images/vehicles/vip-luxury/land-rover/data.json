@@ -1,0 +1,36 @@
+{
+  "slug": "land-rover",
+  "title": "Land Rover",
+  "shortDescription": "Rugged armored Land Rover defender with premium interior.",
+  "longDescription": "Armored Land Rover example page. Images stored under /public/images/vehicles/vip-luxury/land-rover. Thumbnail is `thumbnail.png` and is excluded from the gallery.",
+  "year": 2024,
+  "make": "Land Rover",
+  "model": "Land Rover",
+  "armorLevel": "BR6",
+  "transmission": "8-Speed Automatic",
+  "engine": "3.0L",
+  "horsepower": "360 hp",
+  "drivetrain": "AWD",
+  "dimensions": "3980 x 1990 x 1970",
+  "wheelbase": "3000",
+  "seatingCapacity": "5",
+  "fuelCapacity": "80L",
+  "thumbnail": "thumbnail.png",
+  "gallery": [
+    "land-rover-1.png",
+    "land-rover-2.png",
+    "land-rover-3.png",
+    "land-rover-4.png",
+    "land-rover-5.png",
+    "land-rover-6.png",
+    "land-rover-7.png",
+    "land-rover-8.png",
+    "land-rover-9.png",
+    "land-rover-10.png"
+  ],
+  "meta": {
+    "title": "Land Rover — Sentinel Titans",
+    "description": "Armored Land Rover example — specifications, images and contact options."
+  }
+}
+

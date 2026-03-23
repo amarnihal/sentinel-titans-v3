@@ -1,0 +1,29 @@
+{
+  "slug": "toyota-land-cruiser-79-standard",
+  "title": "Toyota Land Cruiser 79 – Standard",
+  "thumbnail": "thumbnail.png",
+  "gallery": [
+    "image-1.png",
+    "image-2.png",
+    "image-3.png",
+    "image-4.png",
+    "image-5.png",
+    "image-6.png",
+    "image-7.png",
+    "image-8.png"
+  ],
+  "year": 2024,
+  "make": "Toyota",
+  "model": "Land Cruiser 79",
+  "body": "Pickup Truck",
+  "armorLevel": "B6+",
+  "transmission": "5-Speed Manual",
+  "engine": "4.5L Turbo Diesel V8",
+  "horsepower": "202 HP",
+  "drivetrain": "4WD",
+  "dimensions": "4870 x 1870 x 1950",
+  "wheelbase": "2730",
+  "seatingCapacity": 5,
+  "fuelCapacity": "90L",
+  "availability": "In Stock"
+}

@@ -1,0 +1,12 @@
+{
+  "slug": "toyota-land-cruiser-78-hardtop",
+  "title": "Toyota Land Cruiser 78 Hardtop",
+  "make": "Toyota",
+  "model": "Land Cruiser 78 Hardtop",
+  "thumbnail": "thumbnail.png",
+  "year": 2024,
+  "body": "SUV",
+  "gallery": ["01-side-left.png", "02-interior-cargo.png", "03-rear-right.png", "04-front-passenger.png", "05-interior-rear.png"],
+  "colors": [{ "name": "Beige", "hex": "#d9c4a0", "thumbnail": "thumbnail.png", "gallery": ["01-side-left.png", "02-interior-cargo.png", "03-rear-right.png", "04-front-passenger.png", "05-interior-rear.png"] }],
+  "availability": "TBD"
+}

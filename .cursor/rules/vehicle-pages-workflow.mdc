@@ -1,0 +1,46 @@
+---
+description: Vehicle page content & build workflow (thumbnails, galleries, routes)
+alwaysApply: true
+---
+
+# Vehicle pages workflow (canonical)
+
+- Purpose: standardize how individual vehicle pages are created so new vehicles are easy to add/remove and the site UI stays consistent.
+
+- File locations and naming
+  - Per-vehicle folder: `public/images/vehicles/<category-slug>/<vehicle-slug>/`
+  - Required files in the folder:
+    - `thumbnail.(jpg|png|webp)` — canonical thumbnail used in mega-menu and All Vehicles lists
+    - gallery images: any other image files (e.g. `vehicle-1.jpg`, `interior-1.png`)
+    - `data.json` — per-vehicle metadata (slug, title, specs, thumbnail filename, gallery list, meta)
+
+- data.json example (minimal)
+  ```json
+  { "slug":"range-rover","title":"Range Rover","thumbnail":"thumbnail.png","gallery":["img1.jpg","img2.jpg"], "year":2024 }
+  ```
+
+- Build & code rules (assistant must follow)
+  1. Create/verify `data.json` in the vehicle folder. Use `thumbnail` field to point to the thumbnail file name.
+  2. Exclude the thumbnail file from the vehicle page gallery (gallery should only include non-thumbnail images).
+  3. Ensure dynamic route `/vehicles/[category]/[slug]` is used for pages. Use a helper `getVehicleUrl(category, slug)` for all links.
+  4. Update canonical menu data (`data/vehicles.ts`) so its `thumbnail` points to `/images/vehicles/<category-slug>/<vehicle-slug>/<thumbnail>`.
+  5. If you add images, run the thumbnail-generation script (`scripts/generate-vehicle-thumbs.js`) or copy image paths into `data/vehicle-thumbs` as needed.
+  6. Use `VehicleName` component for displaying vehicle names everywhere (cards, mega-menu, detail page). It shows brand (font-weight 400) on top and model (font-weight 600, +2px size) below. Use `size` prop: "sm" for compact contexts (mega-menu), "default" for cards, "lg" for detail hero.
+  7. Gallery UX defaults:
+     - Autoplay interval: 5000ms (5s), pause on hover/focus
+     - Left/right arrow controls and keyboard (ArrowLeft/ArrowRight)
+     - Clickable thumbnails that jump to the image
+  8. CTAs on vehicle pages:
+     - Primary CTA color: `#8B0000`
+     - Buttons should have hover/focus/active/disabled states (hover fill for outline buttons becomes red with white text; focus uses visible ring)
+  9. Mega-menu / All Vehicles cards:
+     - Use the canonical thumbnail file (not a generated preview)
+     - Link `EXPLORE` to `getVehicleUrl(category, slug)` and close the mega-menu on click
+
+- When done building a page, assistant should:
+  - Copy thumbnails into the vehicle folder if assets exist elsewhere
+  - Update `public/images/vehicles/.../data.json` and `data/vehicles.ts` thumbnail entry
+  - Verify the dynamic template displays the gallery (thumbnail excluded), hero, specs, and CTAs
+
+Keep rules concise and follow them whenever creating or updating vehicle pages.
+

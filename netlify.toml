@@ -1,0 +1,11 @@
+# Netlify config for Sentinel Titans (Next.js)
+# publish must be ".next" (not repo root). The Next.js runtime rejects publish === base dir; this also
+# overrides a wrong Netlify UI "Publish directory" of "." / blank treated as root. See Netlify Next.js starter:
+# https://github.com/netlify-templates/next-platform-starter/blob/main/netlify.toml
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"

@@ -1,0 +1,33 @@
+{
+  "slug": "range-rover",
+  "title": "Range Rover",
+  "shortDescription": "Luxury armored SUV with premium comfort and capability.",
+  "longDescription": "This Range Rover example page showcases the vehicle with a hero image, gallery, and base specifications. Images are stored under /public/images/vehicles/vip-luxury/range-rover.",
+  "year": 2024,
+  "make": "Land Rover",
+  "model": "Range Rover",
+  "armorLevel": "BR6",
+  "transmission": "8-Speed Automatic",
+  "engine": "4.4L Gasoline V8",
+  "horsepower": "523 hp",
+  "drivetrain": "AWD",
+  "dimensions": "5054 x 2057 x 1879",
+  "wheelbase": "2997",
+  "seatingCapacity": "5-7",
+  "fuelCapacity": "90L",
+  "thumbnail": "Rangerover_thumbnail.png",
+  "gallery": [
+    "range-rover-1.jpg",
+    "range-rover-2.jpg",
+    "range-rover-3.jpg",
+    "range-rover-4.jpg",
+    "range-rover-5.jpg",
+    "range-rover-6.jpg",
+    "range-rover-7.jpg",
+    "range-rover-8.jpg"
+  ],
+  "meta": {
+    "title": "Range Rover — Sentinel Titans",
+    "description": "Armored Range Rover example — specifications, images and contact options."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "toyota-land-cruiser-76-hardtop",
+  "title": "Toyota Land Cruiser 76 Hardtop",
+  "make": "Toyota",
+  "model": "Land Cruiser 76 Hardtop",
+  "thumbnail": "thumbnail.png",
+  "year": 2024,
+  "body": "SUV",
+  "longDescription": "The Toyota Land Cruiser 76 Hardtop is a rugged, purpose-built off-road vehicle combining legendary 70 Series durability with modern refinements. Featuring a robust chassis, heavy-duty suspension, and optional armor upgrades, it is engineered for demanding terrain and security applications. The spacious interior offers comfort with tan/brown leather upholstery, modern infotainment, and climate control. Equipped with a snorkel, winch-ready bumper, and all-terrain tires, the Land Cruiser 76 Hardtop is ready for any mission.",
+  "armorLevel": "TBD",
+  "transmission": "6-Speed Automatic",
+  "engine": "4.5L V8 Turbo Diesel",
+  "horsepower": "272 HP",
+  "drivetrain": "4WD",
+  "seatingCapacity": "5",
+  "fuelCapacity": "180L",
+  "availability": "TBD"
+}

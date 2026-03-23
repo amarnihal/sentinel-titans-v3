@@ -1,0 +1,46 @@
+{
+  "slug": "toyota-land-cruiser-79",
+  "title": "Toyota Land Cruiser 79",
+  "thumbnail": "toyota-land-cruiser-79-thumbnail.png",
+  "gallery": [
+    "toyota-land-cruiser-79-1.png",
+    "toyota-land-cruiser-79-2.png",
+    "toyota-land-cruiser-79-3.png",
+    "toyota-land-cruiser-79-4.png",
+    "toyota-land-cruiser-79-5.png",
+    "toyota-land-cruiser-79-6.png",
+    "toyota-land-cruiser-79-7.png"
+  ],
+  "colors": [
+    {
+      "name": "White",
+      "thumbnail": "toyota-land-cruiser-79-thumbnail.png",
+      "gallery": [
+        "toyota-land-cruiser-79-1.png",
+        "toyota-land-cruiser-79-2.png",
+        "toyota-land-cruiser-79-3.png",
+        "toyota-land-cruiser-79-4.png",
+        "toyota-land-cruiser-79-5.png",
+        "toyota-land-cruiser-79-6.png",
+        "toyota-land-cruiser-79-7.png"
+      ]
+    },
+    {
+      "name": "Beige",
+      "thumbnail": "toyota-land-cruiser-79-beige-thumbnail.png",
+      "gallery": [
+        "toyota-land-cruiser-79-beige-1.png",
+        "toyota-land-cruiser-79-beige-2.png",
+        "toyota-land-cruiser-79-beige-3.png",
+        "toyota-land-cruiser-79-beige-4.png",
+        "toyota-land-cruiser-79-beige-5.png",
+        "toyota-land-cruiser-79-beige-6.png",
+        "toyota-land-cruiser-79-beige-7.png",
+        "toyota-land-cruiser-79-beige-8.png",
+        "toyota-land-cruiser-79-beige-9.png"
+      ]
+    }
+  ],
+  "year": 0
+}
+

@@ -1,0 +1,51 @@
+---
+description: Project styling conventions for typography, buttons, colors and interactive states
+alwaysApply: true
+---
+
+# Styling Guidelines
+
+These rules document the project's visual standards for typography, buttons, colors and states. Apply them consistently across components.
+
+## Typography
+- Body text (global): 14px (set in `styles/globals.css` or Tailwind `text-[14px]`)
+- Button labels: 14px (use `text-[14px]` or ensure button elements inherit 14px)
+- Footer body text: 12.5px (override only inside `footer` to `font-size: 12.5px`)
+
+## Buttons
+- Default weight: 400 (regular). Example classes: `font-medium` or `font-400` where applicable.
+- Default size: 14px; use `px-? py-?` for spacing but keep label font 14px.
+- States:
+  - Hover: use color inversion when appropriate (e.g., `hover:bg-black hover:text-white` for white buttons)
+  - Focus: outline with `focus:outline-none focus:ring-2 focus:ring-white/40`
+  - Disabled: visually muted (reduced opacity and pointer-events-none)
+
+## Colors & Interactive States
+- Primary nav link color: `text-gray-300`, hover `hover:text-red-800`
+- Backgrounds: header `bg-black/95`, footer `bg-black`
+- All interactive elements should have visible focus rings: `focus:ring-2 focus:ring-white/40`
+
+## Implementation notes
+- Prefer Tailwind utility classes for consistency. If a value isn't available, use explicit values (e.g., `text-[14px]`) rather than arbitrary global overrides.
+- Keep these rules concise in components; use global overrides only for site-wide defaults (`styles/globals.css`).
+
+## Header & Footer consistency
+- Header and Footer are single source-of-truth components. Any visual or logical change to `Header` or `Footer` must be made only in their component files (`components/Header` and `components/Footer`) and will be propagated site-wide via `pages/_app.tsx`.
+- Do not create page-specific header/footer duplicates. If a page needs per-page header/footer behavior, implement it via props or slots passed to the shared `Header`/`Footer` components.
+- When changing header/footer logic or styles, update unit/integration tests and notify the team via changelog entry.
+
+## Vehicle name display
+- Use the `VehicleName` component for all vehicle names (brand + model). Canonical styling: brand on top (font-weight 400), model below (font-weight 600, +2px). Sizes: `sm` (mega-menu), `default` (cards), `lg` (detail hero).
+- When adding new vehicle listings or pages, always use `VehicleName` so styling stays consistent.
+
+## Canonical vehicle data
+- The list of categories, vehicles, thumbnails and associated metadata is the single source-of-truth and must be stored in `data/vehicles.ts`.
+- All UI (mega-menu, listings, detail pages, cards, etc.) must read vehicle information from `data/vehicles.ts` rather than duplicating names, slugs, or image paths in components.
+- If you add or update a vehicle's thumbnail, update the `thumbnail` field in `data/vehicles.ts` (or place the canonical `thumbnail.jpg` under the vehicle's folder matching the project's naming convention).
+- Avoid hard-coding vehicle strings or image paths in components; reference the canonical data to ensure consistency across the site.
+
+## Vehicle asset sync (thumbnails)
+- A repository script exists at `scripts/generate-vehicle-thumbs.js` which scans `public/images/vehicles/*/*` and generates `data/vehicle-thumbs.ts` mapping vehicle slugs to discovered thumbnail paths.
+- Workflow: after uploading vehicle images, run `node scripts/generate-vehicle-thumbs.js` (or an npm script if added) to refresh the mapping; the site components will prefer entries from `data/vehicle-thumbs.ts`.
+- We will run/apply this sync as part of the Vehicles page rollout and whenever new vehicle images are added to ensure thumbnails stay consistent across the site.
+

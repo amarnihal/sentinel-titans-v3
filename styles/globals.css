@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+  background: #F7F8FA;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300; /* body text: light */
+  font-size: 14px;
+}
+
+/* Ensure content doesn't sit underneath fixed header on very small screens */
+main {
+  min-height: calc(100vh - 4rem);
+}
+
+/* Headings use Saira (Google Fonts) and are full caps */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Saira', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600; /* semi-bold */
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Buttons across the site should use regular weight */
+button,
+input[type="button"],
+input[type="submit"],
+a[role="button"],
+.btn,
+.button {
+  font-family: 'Saira', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500; /* medium */
+  font-size: 14px;
+  text-transform: uppercase;
+}
+/* Standard button/link style to apply to future "button" links.
+   Use the `btn` class on anchor elements or other button-like controls to
+   ensure consistent typography (Saira 400, all caps) across the site. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+/* Utility class intentionally removed (undo) */
+
+/* Footer: base font size; sections use explicit text-[14px] etc for hierarchy */
+footer {
+  font-size: 14px;
+}
+
+/* Ensure plain paragraph elements default to 14px */
+p {
+  font-size: 14px;
+}
+
+/* Note: Stratum/RedHatDisplay self-hosted aliases removed — headings now use Saira via Google Fonts */
+
+/* Industry partners ticker - scroll by 50% (one full set) for seamless loop */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker {
+  animation: ticker 45s linear infinite;
+}

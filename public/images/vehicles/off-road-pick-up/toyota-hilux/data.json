@@ -1,0 +1,25 @@
+{
+  "slug": "toyota-hilux",
+  "title": "Toyota Hilux",
+  "thumbnail": "thumbnail.png",
+  "gallery": ["image-1.png", "image-2.png", "image-3.png", "image-4.png", "image-5.png", "image-6.png", "image-7.png"],
+  "colors": [
+    { "name": "Black", "thumbnail": "thumbnail.png", "gallery": ["image-1.png", "image-2.png", "image-3.png", "image-4.png", "image-5.png", "image-6.png", "image-7.png"] },
+    { "name": "White", "thumbnail": "thumbnail.png", "gallery": ["image-1.png", "image-2.png", "image-3.png", "image-4.png", "image-5.png", "image-6.png", "image-7.png"] }
+  ],
+  "year": 2024,
+  "make": "Toyota",
+  "model": "Hilux",
+  "body": "Pickup Truck",
+  "armorLevel": "B6+",
+  "transmission": "6-Speed Automatic",
+  "engine": "2.8L Turbo Diesel",
+  "horsepower": "201 HP",
+  "drivetrain": "4WD",
+  "dimensions": "5325 x 1855 x 1815",
+  "wheelbase": "3085",
+  "seatingCapacity": 5,
+  "fuelCapacity": "80L",
+  "availability": "In Stock",
+  "meta": {}
+}
