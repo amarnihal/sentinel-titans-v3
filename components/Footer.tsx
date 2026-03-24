@@ -21,6 +21,8 @@ export default function Footer() {
     formData.forEach((value, key) => {
       if (typeof value === "string") body.append(key, value)
     })
+    // Netlify honeypot must be present and empty on AJAX submits
+    if (!body.has("bot-field")) body.append("bot-field", "")
 
     try {
       const response = await fetch("/__forms.html", {
@@ -56,11 +58,18 @@ export default function Footer() {
 
             <form
               name="newsletter"
+              method="post"
+              action="/__forms.html"
               onSubmit={onNewsletterSubmit}
               className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md"
             >
               <input type="hidden" name="form-name" value="newsletter" />
-              <input type="hidden" name="bot-field" />
+              <input
+                type="hidden"
+                name="subject"
+                value="Newsletter signup — %{siteName} (%{submissionId})"
+              />
+              <input type="hidden" name="bot-field" value="" />
               <label htmlFor="email" className="sr-only">Email address</label>
               <input
                 id="email"

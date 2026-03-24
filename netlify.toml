@@ -2,6 +2,13 @@
 # publish must be ".next" (not repo root). The Next.js runtime rejects publish === base dir; this also
 # overrides a wrong Netlify UI "Publish directory" of "." / blank treated as root. See Netlify Next.js starter:
 # https://github.com/netlify-templates/next-platform-starter/blob/main/netlify.toml
+#
+# Forms — company inbox for submissions (not configurable in this file):
+# After each deploy, open Netlify → your site → Project configuration → Notifications →
+# Emails and webhooks → Form submission notifications → Add notification → Email.
+# Send to: accounts@sentinel-titans.com
+# Repeat for forms "newsletter", "catalogue", and "vehicles-contact" (or one notification for all forms).
+# Forms use name="email" so the notification email Reply-To is the visitor’s address.
 
 [build]
   command = "npm run build"

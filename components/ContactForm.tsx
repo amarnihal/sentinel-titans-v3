@@ -9,17 +9,21 @@ type FormState = {
   details: string;
 };
 
+const emptyForm: FormState = {
+  name: "",
+  phone: "",
+  email: "",
+  destination: "",
+  lookingFor: "",
+  details: "",
+};
+
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>({
-    name: "",
-    phone: "",
-    email: "",
-    destination: "",
-    lookingFor: "",
-    details: "",
-  });
+  const [form, setForm] = useState<FormState>({ ...emptyForm });
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   function validate(): boolean {
     const e: Partial<FormState> = {};
@@ -37,23 +41,46 @@ export default function ContactForm() {
   ) {
     setForm((s) => ({ ...s, [key]: value }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
+    setSubmitError("");
   }
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!validate()) return;
-    // UI-only form for now — replace this with an API call later.
-    // eslint-disable-next-line no-console
-    console.log("Contact form submit:", form);
-    setSent(true);
-    setForm({
-      name: "",
-      phone: "",
-      email: "",
-      destination: "",
-      lookingFor: "",
-      details: "",
-    });
+    if (!validate() || submitting) return;
+
+    setSubmitting(true);
+    setSubmitError("");
+
+    const body = new URLSearchParams();
+    body.append("form-name", "vehicles-contact");
+    body.append(
+      "subject",
+      "Vehicles page contact — %{siteName} (%{submissionId})"
+    );
+    body.append("name", form.name.trim());
+    body.append("phone", form.phone.trim());
+    body.append("email", form.email.trim());
+    body.append("destination", form.destination);
+    body.append("looking_for", form.lookingFor);
+    body.append("details", form.details.trim());
+    body.append("bot-field", "");
+
+    try {
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      if (!response.ok) throw new Error("submit failed");
+
+      setSent(true);
+      setForm({ ...emptyForm });
+    } catch {
+      setSubmitError("Could not submit right now. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -76,6 +103,8 @@ export default function ContactForm() {
         </label>
         <input
           id="cf-name"
+          name="name"
+          autoComplete="name"
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
           placeholder="Name"
@@ -92,6 +121,8 @@ export default function ContactForm() {
         </label>
         <input
           id="cf-phone"
+          name="phone"
+          autoComplete="tel"
           value={form.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
           placeholder="Phone Number"
@@ -109,6 +140,8 @@ export default function ContactForm() {
         </label>
         <input
           id="cf-email"
+          name="email"
+          autoComplete="email"
           value={form.email}
           onChange={(e) => handleChange("email", e.target.value)}
           placeholder="Email"
@@ -128,16 +161,17 @@ export default function ContactForm() {
             </label>
             <select
               id="cf-destination"
+              name="destination"
               value={form.destination}
               onChange={(e) => handleChange("destination", e.target.value)}
               className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white/40 text-[14px] border-gray-300"
             >
               <option value="">Destination Country</option>
-              <option>United States</option>
-              <option>United Kingdom</option>
-              <option>UAE</option>
-              <option>Saudi Arabia</option>
-              <option>Other</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="UAE">UAE</option>
+              <option value="Saudi Arabia">Saudi Arabia</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -147,16 +181,25 @@ export default function ContactForm() {
             </label>
             <select
               id="cf-lookingfor"
+              name="looking_for"
               value={form.lookingFor}
               onChange={(e) => handleChange("lookingFor", e.target.value)}
               className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white/40 text-[14px] border-gray-300"
             >
               <option value="">I&apos;m looking for...</option>
-              <option>Job/Career Opportunities</option>
-              <option>Armored Vehicle Purchase</option>
-              <option>Armored Vehicle Rental</option>
-              <option>Spare Parts</option>
-              <option>Media Enquiry/Marketing</option>
+              <option value="Job/Career Opportunities">
+                Job/Career Opportunities
+              </option>
+              <option value="Armored Vehicle Purchase">
+                Armored Vehicle Purchase
+              </option>
+              <option value="Armored Vehicle Rental">
+                Armored Vehicle Rental
+              </option>
+              <option value="Spare Parts">Spare Parts</option>
+              <option value="Media Enquiry/Marketing">
+                Media Enquiry/Marketing
+              </option>
             </select>
           </div>
         </div>
@@ -166,6 +209,7 @@ export default function ContactForm() {
         </label>
         <textarea
           id="cf-details"
+          name="details"
           value={form.details}
           onChange={(e) => handleChange("details", e.target.value)}
           placeholder="Additional Details"
@@ -173,14 +217,20 @@ export default function ContactForm() {
           className="w-full mb-3 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white/40 text-[14px] border-gray-300 resize-vertical"
         />
 
+        {submitError && (
+          <p className="text-red-600 text-sm mb-3" role="alert">
+            {submitError}
+          </p>
+        )}
+
         <button
           type="submit"
-          className="w-full bg-red-700 hover:bg-red-800 text-white font-medium text-[14px] py-2 rounded focus:outline-none focus:ring-2 focus:ring-white/40"
+          disabled={submitting}
+          className="w-full bg-[#8B0000] hover:bg-[#6d0000] text-white font-medium text-[14px] py-2 rounded focus:outline-none focus:ring-2 focus:ring-white/40 disabled:opacity-60 disabled:pointer-events-none transition-colors"
         >
-          GET A QUOTE
+          {submitting ? "SUBMITTING…" : "GET A QUOTE"}
         </button>
       </form>
     </aside>
   );
 }
-

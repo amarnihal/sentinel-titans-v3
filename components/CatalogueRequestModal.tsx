@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react"
+import { downloadCatalogueBrochure } from "../lib/catalogueBrochure"
 
 export default function CatalogueRequestModal() {
   const titleId = useId()
@@ -63,6 +64,10 @@ export default function CatalogueRequestModal() {
     try {
       const body = new URLSearchParams()
       body.append("form-name", "catalogue")
+      body.append(
+        "subject",
+        "Catalogue request — %{siteName} (%{submissionId})"
+      )
       body.append("email", email.trim())
       body.append("bot-field", "")
 
@@ -76,6 +81,7 @@ export default function CatalogueRequestModal() {
 
       setSent(true)
       setEmail("")
+      void downloadCatalogueBrochure()
     } catch {
       setError("Could not submit right now. Please try again.")
     } finally {
@@ -152,12 +158,14 @@ export default function CatalogueRequestModal() {
               Request catalogue
             </h2>
             <p className="text-sm text-gray-600 mb-4">
-              Enter your email and we&apos;ll send you our product catalogue.
+              Enter your email to request the catalogue. After you submit, the
+              brochure PDF will download automatically when available.
             </p>
 
             {sent ? (
               <div className="p-3 bg-green-50 text-green-800 rounded text-sm">
-                Thank you — we&apos;ll send the catalogue to your inbox shortly.
+                Thank you — your request was received. Your catalogue download
+                should start automatically.
               </div>
             ) : (
               <form onSubmit={onSubmit} noValidate>
