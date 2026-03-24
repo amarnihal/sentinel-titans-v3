@@ -198,7 +198,7 @@ export default function CatalogueRequestModal() {
                   disabled={submitting}
                   className="w-full py-2.5 rounded text-[14px] font-medium text-white bg-[#8B0000] hover:bg-[#6d0000] focus:outline-none focus:ring-2 focus:ring-black/30 disabled:opacity-60 disabled:pointer-events-none transition-colors"
                 >
-                  {submitting ? "SUBMITTING…" : "SUBMIT"}
+                  {submitting ? "SUBMITTING…" : "SUBMIT AND DOWNLOAD"}
                 </button>
               </form>
             )}

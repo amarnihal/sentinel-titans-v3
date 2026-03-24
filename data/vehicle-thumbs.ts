@@ -6,6 +6,7 @@ export const VEHICLE_THUMBNAILS = {
   "toyota-land-cruiser-79-standard": "/images/vehicles/off-road-pick-up/toyota-land-cruiser-79-standard/thumbnail.png",
   "toyota-camry": "/images/vehicles/sedan/toyota-camry/thumbnail.png",
   "chevrolet-tahoe": "/images/vehicles/suv/chevrolet-tahoe/tahoe-thumbnail.png",
+  "toyota-land-cruiser-300": "/images/vehicles/suv/toyota-land-cruiser-300/thumbnail.png",
   "toyota-land-cruiser-76-hardtop": "/images/vehicles/suv/toyota-land-cruiser-76-hardtop/thumbnail.png",
   "toyota-land-cruiser-78-hardtop": "/images/vehicles/suv/toyota-land-cruiser-78-hardtop/thumbnail.png",
   "land-rover": "/images/vehicles/vip-luxury/land-rover/thumbnail.png",

@@ -41,6 +41,18 @@
       ]
     }
   ],
-  "year": 0
+  "year": 2024,
+  "make": "Toyota",
+  "model": "Land Cruiser 79",
+  "body": "Armored cash-in-transit",
+  "availability": "TBD",
+  "armorLevel": "B6+ CIT (typical configuration)",
+  "transmission": "5-Speed Manual",
+  "engine": "4.5L Turbo Diesel V8",
+  "horsepower": "202 HP",
+  "drivetrain": "4WD",
+  "dimensions": "5220 x 1870 x 1950",
+  "wheelbase": "3180",
+  "seatingCapacity": "5",
+  "fuelCapacity": "130L"
 }
-

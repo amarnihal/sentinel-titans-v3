@@ -1,0 +1,30 @@
+{
+  "slug": "toyota-land-cruiser-300",
+  "title": "Toyota Land Cruiser 300",
+  "make": "Toyota",
+  "model": "Land Cruiser 300",
+  "body": "SUV",
+  "year": 2024,
+  "thumbnail": "thumbnail.png",
+  "gallery": [
+    "gallery-1.png",
+    "gallery-2.png",
+    "gallery-3.png",
+    "gallery-4.png",
+    "gallery-5.png",
+    "gallery-6.png"
+  ],
+  "colors": [{
+    "name": "Black",
+    "thumbnail": "thumbnail.png",
+    "gallery": [
+      "gallery-1.png",
+      "gallery-2.png",
+      "gallery-3.png",
+      "gallery-4.png",
+      "gallery-5.png",
+      "gallery-6.png"
+    ]
+  }],
+  "availability": "TBD"
+}

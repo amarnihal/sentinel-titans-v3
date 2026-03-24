@@ -2,6 +2,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { vehicles as canonicalVehicles, Vehicle } from "../data/vehicles"
 import { contactInfo } from "../data/contact"
+import ContactPhoneIcon from "./ContactPhoneIcon"
 import MegaMenuVehicleCard from "./MegaMenuVehicleCard"
 
 export default function Header() {
@@ -119,9 +120,6 @@ export default function Header() {
               aria-expanded="false"
               aria-label="Contact"
             >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
               CONTACT
             </button>
             <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -131,8 +129,12 @@ export default function Header() {
                     <li key={p.href}>
                       <a
                         href={p.href}
-                        className="block px-4 py-2 text-[14px] text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                        className="flex items-center gap-3 px-4 py-2 text-[14px] text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
                       >
+                        <ContactPhoneIcon
+                          variant={p.icon ?? "phone"}
+                          className="w-4 h-4 shrink-0 text-gray-400"
+                        />
                         {p.label}
                       </a>
                     </li>

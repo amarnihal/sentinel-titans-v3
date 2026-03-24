@@ -1,0 +1,29 @@
+{
+  "slug": "chevrolet-tahoe",
+  "title": "Chevrolet Tahoe",
+  "make": "Chevrolet",
+  "model": "Tahoe",
+  "body": "SUV",
+  "year": 2024,
+  "thumbnail": "tahoe-thumbnail.png",
+  "gallery": [
+    "chevrolet-tahoe-1.jpg",
+    "chevrolet-tahoe-2.jpg",
+    "chevrolet-tahoe-3.jpg",
+    "chevrolet-tahoe-4.jpg",
+    "chevrolet-tahoe-5.jpg",
+    "chevrolet-tahoe-6.jpg",
+    "chevrolet-tahoe-7.jpg"
+  ],
+  "colors": [{ "name": "Black", "thumbnail": "tahoe-thumbnail.png" }],
+  "availability": "TBD",
+  "armorLevel": "B6+ (typical configuration)",
+  "transmission": "10-Speed Automatic",
+  "engine": "5.3L V8 EcoTec3",
+  "horsepower": "355 hp",
+  "drivetrain": "4WD",
+  "dimensions": "5350 x 2060 x 1925",
+  "wheelbase": "3071",
+  "seatingCapacity": "7–8",
+  "fuelCapacity": "91L"
+}

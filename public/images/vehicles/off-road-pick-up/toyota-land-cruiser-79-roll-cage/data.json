@@ -10,5 +10,32 @@
     "image-5.png",
     "image-6.png"
   ],
-  "year": 0
+  "year": 2024,
+  "make": "Toyota",
+  "model": "Land Cruiser 79 – Roll Cage Version",
+  "body": "Pickup",
+  "colors": [
+    {
+      "name": "Beige",
+      "thumbnail": "thumbnail.png",
+      "gallery": [
+        "image-1.png",
+        "image-2.png",
+        "image-3.png",
+        "image-4.png",
+        "image-5.png",
+        "image-6.png"
+      ]
+    }
+  ],
+  "availability": "TBD",
+  "armorLevel": "B6+ (typical configuration)",
+  "transmission": "5-Speed Manual",
+  "engine": "4.5L Turbo Diesel V8",
+  "horsepower": "202 HP",
+  "drivetrain": "4WD",
+  "dimensions": "5305 x 1870 x 1960",
+  "wheelbase": "3180",
+  "seatingCapacity": "5",
+  "fuelCapacity": "90L"
 }

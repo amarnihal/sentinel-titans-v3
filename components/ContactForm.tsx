@@ -187,9 +187,6 @@ export default function ContactForm() {
               className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white/40 text-[14px] border-gray-300"
             >
               <option value="">I&apos;m looking for...</option>
-              <option value="Job/Career Opportunities">
-                Job/Career Opportunities
-              </option>
               <option value="Armored Vehicle Purchase">
                 Armored Vehicle Purchase
               </option>

@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react"
 import { useRouter } from "next/router"
 import { contactInfo } from "../data/contact"
+import ContactPhoneIcon from "./ContactPhoneIcon"
 
 export default function Footer() {
   const router = useRouter()
@@ -101,9 +102,10 @@ export default function Footer() {
               {contactInfo.phones.map((p) => (
                 <li key={p.href}>
                   <a href={p.href} className="inline-flex items-center gap-3 text-[14px] text-white/85 hover:text-white transition-colors">
-                    <svg className="w-4 h-4 shrink-0 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-                    </svg>
+                    <ContactPhoneIcon
+                      variant={p.icon ?? "phone"}
+                      className="w-4 h-4 shrink-0 text-white/70"
+                    />
                     {p.label}
                   </a>
                 </li>
@@ -142,13 +144,31 @@ export default function Footer() {
           <img src="/logo.svg" alt="Sentinel Titans" className="h-9 w-auto opacity-95" />
 
           <div className="flex items-center gap-6">
-            <a href="#" aria-label="Facebook" className="text-white/60 hover:text-white transition-colors">
+            <a
+              href="https://www.facebook.com/people/Sentinel-Titans-Security-Vehicle-LLC/61565451062374/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-white/60 hover:text-white transition-colors"
+            >
               <img src="/images/social-media/facebook.svg" alt="" className="h-5 w-5" style={{ filter: "invert(1)" }} />
             </a>
-            <a href="#" aria-label="Instagram" className="text-white/60 hover:text-white transition-colors">
+            <a
+              href="https://www.instagram.com/sentinel_titans/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-white/60 hover:text-white transition-colors"
+            >
               <img src="/images/social-media/instagram.svg" alt="" className="h-5 w-5" style={{ filter: "invert(1)" }} />
             </a>
-            <a href="#" aria-label="LinkedIn" className="text-white/60 hover:text-white transition-colors">
+            <a
+              href="https://www.linkedin.com/in/sentinel-titans-security-vehicle-llc-1b090a328/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-white/60 hover:text-white transition-colors"
+            >
               <img src="/images/social-media/linkedin.svg" alt="" className="h-5 w-5" style={{ filter: "invert(1)" }} />
             </a>
           </div>

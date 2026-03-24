@@ -17,6 +17,14 @@
     "gallery-8.png"
   ],
   "availability": "TBD",
+  "armorLevel": "B6",
+  "transmission": "8-Speed Automatic",
+  "engine": "2.5L 4-Cylinder / Hybrid (region-dependent)",
+  "horsepower": "208 hp (2.5L) / 225 hp (hybrid, combined)",
+  "drivetrain": "FWD / AWD (as configured)",
+  "dimensions": "4885 x 1840 x 1445",
+  "wheelbase": "2825",
+  "seatingCapacity": "5",
+  "fuelCapacity": "60L",
   "meta": {}
 }
-

@@ -11,5 +11,18 @@
     "image-6.png",
     "image-7.png"
   ],
-  "year": 0
+  "year": 2024,
+  "make": "Mercedes-Benz",
+  "model": "G63 AMG",
+  "body": "SUV",
+  "availability": "TBD",
+  "armorLevel": "B6+ (typical configuration)",
+  "transmission": "9-Speed AMG SPEEDSHIFT TCT",
+  "engine": "4.0L V8 Biturbo",
+  "horsepower": "577 hp",
+  "drivetrain": "4MATIC AWD",
+  "dimensions": "4817 x 1931 x 1969",
+  "wheelbase": "2890",
+  "seatingCapacity": "5",
+  "fuelCapacity": "100L"
 }

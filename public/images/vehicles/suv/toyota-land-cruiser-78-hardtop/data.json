@@ -6,7 +6,35 @@
   "thumbnail": "thumbnail.png",
   "year": 2024,
   "body": "SUV",
-  "gallery": ["01-side-left.png", "02-interior-cargo.png", "03-rear-right.png", "04-front-passenger.png", "05-interior-rear.png"],
-  "colors": [{ "name": "Beige", "hex": "#d9c4a0", "thumbnail": "thumbnail.png", "gallery": ["01-side-left.png", "02-interior-cargo.png", "03-rear-right.png", "04-front-passenger.png", "05-interior-rear.png"] }],
-  "availability": "TBD"
+  "gallery": [
+    "01-side-left.png",
+    "02-interior-cargo.png",
+    "03-rear-right.png",
+    "04-front-passenger.png",
+    "05-interior-rear.png"
+  ],
+  "colors": [
+    {
+      "name": "Beige",
+      "hex": "#d9c4a0",
+      "thumbnail": "thumbnail.png",
+      "gallery": [
+        "01-side-left.png",
+        "02-interior-cargo.png",
+        "03-rear-right.png",
+        "04-front-passenger.png",
+        "05-interior-rear.png"
+      ]
+    }
+  ],
+  "availability": "TBD",
+  "armorLevel": "BR6 (typical configuration)",
+  "transmission": "5-Speed Manual",
+  "engine": "4.5L V8 Turbo Diesel",
+  "horsepower": "195 hp",
+  "drivetrain": "4WD",
+  "dimensions": "4980 x 1870 x 1920",
+  "wheelbase": "2730",
+  "seatingCapacity": "9",
+  "fuelCapacity": "130L"
 }
