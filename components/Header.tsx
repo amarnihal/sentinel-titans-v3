@@ -255,7 +255,7 @@ export default function Header() {
                           onClick={() => setActiveTab(cat)}
                           className={`px-3 py-2 text-[14px] ${activeTab === cat ? "border-b-2 border-red-800 text-red-800" : "text-gray-700 hover:text-red-800"} focus:outline-none`}
                         >
-                          {cat}
+                          {cat.toUpperCase()}
                         </button>
                       ))}
                     </div>
@@ -270,7 +270,7 @@ export default function Header() {
                           onClick={() => setOpenMobileCategory(openMobileCategory === cat ? null : cat)}
                           className="w-full text-left px-4 py-3 flex items-center justify-between text-[14px] font-medium"
                         >
-                          <span className="text-gray-800">{cat}</span>
+                            <span className="text-gray-800">{cat.toUpperCase()}</span>
                           <svg className={`w-5 h-5 text-gray-600 transform ${openMobileCategory === cat ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                             <path d="M6 8l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>

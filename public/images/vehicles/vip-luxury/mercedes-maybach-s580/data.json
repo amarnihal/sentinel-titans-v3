@@ -1,10 +1,10 @@
 {
-  "slug": "toyota-camry",
-  "title": "Toyota Camry",
-  "year": 2024,
-  "make": "Toyota",
-  "model": "Camry",
+  "slug": "mercedes-maybach-s580",
+  "title": "Mercedes-Maybach S580",
+  "make": "Mercedes-Maybach",
+  "model": "S580",
   "body": "Sedan",
+  "year": 2024,
   "thumbnail": "thumbnail.png",
   "gallery": [
     "gallery-1.png",
@@ -14,9 +14,10 @@
     "gallery-5.png",
     "gallery-6.png",
     "gallery-7.png",
-    "gallery-8.png"
+    "gallery-8.png",
+    "gallery-9.png",
+    "gallery-10.png"
   ],
   "availability": "TBD",
   "meta": {}
 }
-

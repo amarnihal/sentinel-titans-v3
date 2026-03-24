@@ -5,6 +5,7 @@ import { CATEGORIES, VEHICLES } from "../data/vehicles"
 import VehiclesSection from "../components/VehiclesSection"
 import IndustryPartnersTicker from "../components/IndustryPartnersTicker"
 import CompanyInfoSection from "../components/CompanyInfoSection"
+import CatalogueRequestModal from "../components/CatalogueRequestModal"
 
 export default function Home() {
   // Helper: pick a representative thumbnail for a category (fallback to placeholder)
@@ -13,6 +14,7 @@ export default function Home() {
     if (category === "VIP/LUXURY") return "/assets/vip_luxury-b44ce5b7-89a1-4ba4-b922-f980628130fc.png"
     if (category === "CASH-IN-TRANSIT (CIT)") return "/assets/cash-in-transit-43a26ed3-3496-4200-a5e5-dddce31595ca.png"
     if (category === "OFF-ROAD & PICK-UP") return "/assets/offroadpickup-bd3e3a5d-706c-4a51-87c2-028f6936f6c5.png"
+    if (category === "Sedan") return "/assets/sedan-05170840-d528-4241-ae6d-ba5efd6b0bac.png"
     const match = VEHICLES.find((v) => v.category === category && v.thumbnail)
     return (match?.thumbnail) || "/placeholders/vehicle-thumb.svg"
   }
@@ -50,7 +52,7 @@ export default function Home() {
                       className="text-white text-[18px] md:text-[20px] font-semibold px-4 text-center"
                       style={{ fontFamily: "'Saira', Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif", fontWeight: 700 }}
                     >
-                      {cat}
+                      {cat.toUpperCase()}
                     </span>
                   </div>
                 </Link>
@@ -82,16 +84,7 @@ export default function Home() {
                 Sentinel Titans engineers high-performance armored SUVs, sedans, personnel carriers, and cash-in-transit vehicles built for uncompromising security. Trusted by banks, law enforcement, corporations, and private clients worldwide, our vehicles combine advanced design with proven protection. Request our catalogue to explore the full range of mission-ready solutions.
               </p>
 
-              <a
-                href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 text-[14px] font-medium text-white bg-transparent border border-white hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/40 transition-colors"
-                style={{ fontFamily: "'Saira', Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif" }}
-              >
-                REQUEST CATALOGUE
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
+              <CatalogueRequestModal />
             </div>
 
             <div className="w-full min-h-[280px] md:min-h-[360px] aspect-video overflow-hidden relative">

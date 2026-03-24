@@ -10,5 +10,7 @@ export const VEHICLE_THUMBNAILS = {
   "toyota-land-cruiser-78-hardtop": "/images/vehicles/suv/toyota-land-cruiser-78-hardtop/thumbnail.png",
   "land-rover": "/images/vehicles/vip-luxury/land-rover/thumbnail.png",
   "mercedes-benz-g63-amg": "/images/vehicles/vip-luxury/mercedes-benz-g63-amg/thumbnail.png",
+  "mercedes-maybach-s450": "/images/vehicles/vip-luxury/mercedes-maybach-s450/thumbnail.png",
+  "mercedes-maybach-s580": "/images/vehicles/vip-luxury/mercedes-maybach-s580/thumbnail.png",
   "range-rover": "/images/vehicles/vip-luxury/range-rover/Rangerover_thumbnail.png"
 } as Record<string,string>

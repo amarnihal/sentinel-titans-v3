@@ -143,7 +143,7 @@ export default function ContactForm() {
 
           <div className="flex-1">
             <label className="sr-only" htmlFor="cf-lookingfor">
-              I'm looking for...
+              I&apos;m looking for...
             </label>
             <select
               id="cf-lookingfor"
@@ -151,7 +151,7 @@ export default function ContactForm() {
               onChange={(e) => handleChange("lookingFor", e.target.value)}
               className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white/40 text-[14px] border-gray-300"
             >
-              <option value="">I'm looking for...</option>
+              <option value="">I&apos;m looking for...</option>
               <option>Job/Career Opportunities</option>
               <option>Armored Vehicle Purchase</option>
               <option>Armored Vehicle Rental</option>

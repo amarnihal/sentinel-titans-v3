@@ -51,7 +51,8 @@ export default function VehiclesPage() {
     })
   }, [filter, query])
 
-  const title = filter === "All Vehicles" ? "All Armored vehicles" : `All Armored ${filter}`
+  const title =
+    filter === "All Vehicles" ? "All Armored vehicles" : `All Armored ${filter.toUpperCase()}`
 
   return (
     <div className="min-h-screen bg-page">
@@ -86,7 +87,7 @@ export default function VehiclesPage() {
                       onChange={() => setFilter(cat)}
                       className="w-4 h-4 border rounded-none appearance-none checked:bg-black checked:border-black"
                     />
-                    <span className={`text-sm ${filter === cat ? 'font-medium' : ''}`}>{cat}</span>
+                    <span className={`text-sm ${filter === cat ? 'font-medium' : ''}`}>{cat.toUpperCase()}</span>
                   </label>
                 ))}
               </nav>

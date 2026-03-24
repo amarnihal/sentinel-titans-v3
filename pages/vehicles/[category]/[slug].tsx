@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import VehicleCard from "../../../components/VehicleCard";
 import ColorSelector from "../../../components/ColorSelector";
-import { vehicles as canonicalVehicles } from "../../../data/vehicles";
+import { vehicles as canonicalVehicles, CATEGORIES } from "../../../data/vehicles";
 import { categoryToSlug } from "../../../lib/getVehicleUrl";
 import VehicleName from "../../../components/VehicleName";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -85,6 +86,8 @@ const VehiclePage: React.FC<Props> = ({ vehicle, category, slug, images, similar
   const effectiveColors = getEffectiveColorsForPage(vehicle);
   const hasExplicitColors = Boolean(vehicle.colors && vehicle.colors.length > 0);
   const selectedColor = effectiveColors[selectedColorIndex] ?? null;
+  const categoryLabel =
+    CATEGORIES.find((c) => categoryToSlug(c) === category)?.toUpperCase() || category.toUpperCase();
 
   const imagesForColor = useMemo(() => {
     if (hasExplicitColors) {
@@ -179,7 +182,7 @@ const VehiclePage: React.FC<Props> = ({ vehicle, category, slug, images, similar
   return (
     <main className="max-w-7xl mx-auto p-6">
       <nav className="text-sm text-gray-500 mb-4">
-        <a href="/" className="hover:underline">Home</a> / <a href="/vehicles" className="hover:underline">Vehicles</a> / <span className="capitalize">{category}</span> / <span className="font-semibold">{vehicle.title || slug}</span>
+        <Link href="/" className="hover:underline">Home</Link> / <Link href="/vehicles" className="hover:underline">Vehicles</Link> / <span>{categoryLabel}</span> / <span className="font-semibold">{vehicle.title || slug}</span>
       </nav>
 
       <header className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
@@ -308,7 +311,7 @@ const VehiclePage: React.FC<Props> = ({ vehicle, category, slug, images, similar
 
       <section id="inquiry" className="mt-8">
         <h3 className="text-xl font-semibold mb-2">Contact about this vehicle</h3>
-        <p className="text-sm text-gray-600 mb-4">We'll add a full contact form later. For now use the inquiry CTA.</p>
+        <p className="text-sm text-gray-600 mb-4">We&apos;ll add a full contact form later. For now use the inquiry CTA.</p>
       </section>
       {similarVehicles && similarVehicles.length > 0 && (
         <section className="mt-12 max-w-7xl mx-auto p-6">

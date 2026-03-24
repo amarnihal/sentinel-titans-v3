@@ -21,7 +21,12 @@ export default function MegaMenuVehicleCard({
   onExploreClick,
   variant = "desktop",
 }: Props) {
-  const src = getVehicleThumbnail(vehicle, category, 0, VEHICLE_THUMBNAILS)
+  // Mega-menu should always use the canonical per-vehicle `thumbnail.png`,
+  // not a generated preview thumbnail.
+  const src =
+    vehicle.thumbnail && !vehicle.thumbnail.includes("placeholder")
+      ? vehicle.thumbnail
+      : getVehicleThumbnail(vehicle, category, 0, VEHICLE_THUMBNAILS)
   const imgHeight = variant === "mobile" ? "h-28" : "h-40"
   const cardMinH = variant === "mobile" ? "min-h-[180px]" : "min-h-[220px]"
   const textAreaH = variant === "mobile" ? "h-10" : "h-11"
