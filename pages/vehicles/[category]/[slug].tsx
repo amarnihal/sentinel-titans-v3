@@ -312,7 +312,7 @@ const VehiclePage: React.FC<Props> = ({ vehicle, category, slug, images, similar
               </span>
             </a>
             <a
-              href="tel:"
+              href="tel:+971545637533"
               style={{ fontFamily: "Saira, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif", fontWeight: 600 }}
               className="group block text-center bg-white border border-black text-black py-2 rounded-none transition-colors duration-150 hover:bg-black hover:border-white hover:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/40 disabled:opacity-50 disabled:pointer-events-none text-[14px] uppercase"
             >
@@ -322,7 +322,9 @@ const VehiclePage: React.FC<Props> = ({ vehicle, category, slug, images, similar
               </span>
             </a>
             <a
-              href="#"
+              href="https://wa.me/971545637533"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ backgroundColor: "#43A700", border: `2px solid #43A700`, fontFamily: "Saira, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif", fontWeight: 600 }}
               className="block text-center text-white py-2 rounded-none transition-colors duration-150 hover:opacity-90 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/40 disabled:opacity-50 disabled:pointer-events-none text-[14px] uppercase"
             >

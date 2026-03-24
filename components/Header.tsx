@@ -12,8 +12,11 @@ export default function Header() {
   const [activeTab, setActiveTab] = useState("SUV")
   const menuRef = useRef<HTMLDivElement | null>(null)
   const vehiclesButtonRef = useRef<HTMLButtonElement | null>(null)
+  const mobileContactRef = useRef<HTMLDivElement | null>(null)
   const [openMobileCategory, setOpenMobileCategory] = useState<string | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileContactOpen, setMobileContactOpen] = useState(false)
+  const isAnyMenuOpen = mobileMenuOpen || vehiclesOpen
 
   // derive categories from canonical data; keep this order for tabs
   const categoriesOrder = ["SUV", "Sedan", "OFF-ROAD & PICK-UP", "CASH-IN-TRANSIT (CIT)", "VIP/LUXURY"]
@@ -24,6 +27,10 @@ export default function Header() {
 
   useEffect(() => {
     function onScroll() {
+      if (isAnyMenuOpen) {
+        setVisible(true)
+        return
+      }
       const y = window.scrollY
       if (y < lastY.current) {
         // scrolling up -> show
@@ -39,7 +46,7 @@ export default function Header() {
     lastY.current = typeof window !== "undefined" ? window.scrollY : 0
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [isAnyMenuOpen])
 
   // Close mega menu on outside click or ESC
   useEffect(() => {
@@ -47,9 +54,13 @@ export default function Header() {
       if (vehiclesOpen && menuRef.current && !menuRef.current.contains(e.target as Node) && vehiclesButtonRef.current && !vehiclesButtonRef.current.contains(e.target as Node)) {
         setVehiclesOpen(false)
       }
+      if (mobileContactOpen && mobileContactRef.current && !mobileContactRef.current.contains(e.target as Node)) {
+        setMobileContactOpen(false)
+      }
     }
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") setVehiclesOpen(false)
+      if (e.key === "Escape") setMobileContactOpen(false)
     }
     document.addEventListener("click", onClick)
     document.addEventListener("keydown", onKey)
@@ -57,15 +68,16 @@ export default function Header() {
       document.removeEventListener("click", onClick)
       document.removeEventListener("keydown", onKey)
     }
-  }, [vehiclesOpen])
+  }, [vehiclesOpen, mobileContactOpen])
 
-  // Close mobile menu on ESC; lock body scroll when open
+  // Close mobile menu on ESC; lock body scroll when mobile menus are open
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") setMobileMenuOpen(false)
     }
     document.addEventListener("keydown", onKey)
-    if (mobileMenuOpen) {
+    const isMobileViewport = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+    if (isMobileViewport && isAnyMenuOpen) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = ""
@@ -74,7 +86,26 @@ export default function Header() {
       document.removeEventListener("keydown", onKey)
       document.body.style.overflow = ""
     }
-  }, [mobileMenuOpen])
+  }, [isAnyMenuOpen])
+
+  // Keep menu states mutually exclusive to avoid overlap/stuck states.
+  useEffect(() => {
+    if (mobileMenuOpen && vehiclesOpen) {
+      setVehiclesOpen(false)
+    }
+  }, [mobileMenuOpen, vehiclesOpen])
+
+  useEffect(() => {
+    if (mobileMenuOpen && mobileContactOpen) {
+      setMobileContactOpen(false)
+    }
+  }, [mobileMenuOpen, mobileContactOpen])
+
+  useEffect(() => {
+    if (vehiclesOpen && mobileContactOpen) {
+      setMobileContactOpen(false)
+    }
+  }, [vehiclesOpen, mobileContactOpen])
 
   return (
     <header
@@ -155,18 +186,63 @@ export default function Header() {
 
         {/* Mobile: hamburger + call icon */}
         <div className="flex md:hidden items-center gap-3">
-          <a
-            href={contactInfo.phones[0].href}
-            className="p-2 text-gray-300 hover:text-red-800 focus:outline-none focus:ring-2 focus:ring-white/40 rounded"
-            aria-label="Call us"
-          >
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          <div className="relative" ref={mobileContactRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false)
+                setVehiclesOpen(false)
+                setMobileContactOpen(v => !v)
+              }}
+              className="p-2 text-gray-300 hover:text-red-800 focus:outline-none focus:ring-2 focus:ring-white/40 rounded"
+              aria-label="Open contact options"
+              aria-expanded={mobileContactOpen}
+              aria-controls="mobile-contact-menu"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <div
+              id="mobile-contact-menu"
+              className={`absolute right-0 top-full mt-2 min-w-[240px] bg-black/95 border border-white/15 shadow-xl rounded z-50 transition-all duration-150 ${mobileContactOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}
+            >
+              <ul className="py-2">
+                {contactInfo.phones.map((p) => (
+                  <li key={p.href}>
+                    <a
+                      href={p.href}
+                      onClick={() => setMobileContactOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2 text-[14px] text-gray-300 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40"
+                    >
+                      <ContactPhoneIcon
+                        variant={p.icon ?? "phone"}
+                        className="w-4 h-4 shrink-0 text-gray-400"
+                      />
+                      {p.label}
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <a
+                    href={contactInfo.email.href}
+                    onClick={() => setMobileContactOpen(false)}
+                    className="block px-4 py-2 text-[14px] text-gray-300 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40"
+                  >
+                    {contactInfo.email.label}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(m => !m)}
+            onClick={() => {
+              setMobileContactOpen(false)
+              setVehiclesOpen(false)
+              setOpenMobileCategory(null)
+              setMobileMenuOpen(m => !m)
+            }}
             className="p-2 text-gray-300 hover:text-red-800 focus:outline-none focus:ring-2 focus:ring-white/40 rounded"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav-menu"
@@ -193,7 +269,7 @@ export default function Header() {
           className={`fixed inset-0 top-16 z-30 md:hidden bg-black/95 transition-opacity duration-200 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
           onClick={(e) => e.target === e.currentTarget && setMobileMenuOpen(false)}
         >
-          <nav className="flex flex-col p-6 gap-1" onClick={(e) => e.stopPropagation()}>
+          <nav className="flex flex-col p-6 gap-1 bg-black" onClick={(e) => e.stopPropagation()}>
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
@@ -226,8 +302,8 @@ export default function Header() {
             className={`fixed left-0 right-0 top-16 z-40 transform transition-all duration-200 ${vehiclesOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}`}
           >
             {/* Background spans full viewport width */}
-            <div className="w-full bg-page text-black shadow-lg border-t border-gray-200">
-              <div className="w-full px-4 sm:px-6 lg:px-8 relative">
+            <div className="w-full bg-white text-black shadow-lg border-t border-gray-300">
+              <div className="w-full px-4 sm:px-6 lg:px-8 relative max-h-[calc(100vh-4rem)] overflow-y-auto">
                 <div className="max-w-full mx-auto">
                   {/* Close button (top-right of mega menu) */}
                   <button
